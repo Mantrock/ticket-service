@@ -1,4 +1,4 @@
-package emmert.frank;
+package emmert.frank.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
