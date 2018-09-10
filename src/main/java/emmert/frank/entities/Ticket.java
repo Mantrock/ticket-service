@@ -1,5 +1,6 @@
 package emmert.frank.entities;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
 public class Ticket {
