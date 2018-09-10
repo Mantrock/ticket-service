@@ -52,7 +52,7 @@ public class TicketRepository {
 
     public void holdSeats(List<Ticket> tickets, String email, int hold_id) {
         for (Ticket ticket : tickets) {
-            jdbcTemplate.update("update ticket set status = ?, hold_id = ?, email = ? where seat_number = ?", Constants.HELD, hold_id, email, ticket.getSeatNumber());
+            jdbcTemplate.update("update ticket set status = ?, hold_id = ?, email = ?, last_updated_time = CURRENT_TIMESTAMP where seat_number = ?", Constants.HELD, hold_id, email, ticket.getSeatNumber());
         }
     }
 
@@ -61,6 +61,11 @@ public class TicketRepository {
     }
 
     public void confirmSeats(int hold_id, String email, String confirmationCode) {
-        jdbcTemplate.update("update ticket set status = ?, confirmation_code = ? where hold_id = ? and email = ?", Constants.RESERVED, confirmationCode, hold_id, email);
+        jdbcTemplate.update("update ticket set status = ?, confirmation_code = ?, last_updated_time = CURRENT_TIMESTAMP where hold_id = ? and email = ?", Constants.RESERVED, confirmationCode, hold_id, email);
+    }
+
+    public int clearHeldSeats() {
+        return jdbcTemplate.update("update ticket set status = ?, last_updated_time = CURRENT_TIMESTAMP, hold_id = null, email = null where status = ? and CURRENT_TIMESTAMP > TIMESTAMPADD ( s , ?, last_updated_time )"
+                , Constants.FREE, Constants.HELD, Constants.HOLD_TIME_SECONDS);
     }
 }

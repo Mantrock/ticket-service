@@ -1,6 +1,6 @@
 package emmert.frank.controllers;
 
-import emmert.frank.TicketServiceImpl;
+import emmert.frank.BusinessObjects.TicketServiceImpl;
 import emmert.frank.entities.SeatHold;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

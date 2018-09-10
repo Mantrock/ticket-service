@@ -6,5 +6,6 @@ create table ticket
    hold_id integer,
    confirmation_code varchar(255),
    email varchar(255),
-   primary key(seat_number)
+   primary key(seat_number),
+   last_updated_time timestamp
 );

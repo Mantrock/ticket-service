@@ -1,6 +1,5 @@
-package emmert.frank;
+package emmert.frank.BusinessObjects;
 
-import emmert.frank.BusinessObjects.TicketService;
 import emmert.frank.entities.SeatHold;
 import emmert.frank.entities.Ticket;
 import emmert.frank.repositories.TicketRepository;
