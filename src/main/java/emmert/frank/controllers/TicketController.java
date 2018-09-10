@@ -5,9 +5,10 @@ import emmert.frank.entities.SeatHold;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.concurrent.atomic.AtomicLong;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TicketController {
@@ -23,12 +24,12 @@ public class TicketController {
     }
 
     @RequestMapping(value = "/ticket/findAndHoldSeats/{numSeats}/{email}", method = RequestMethod.POST)
-    public SeatHold findAndHoldSeats(@RequestParam(value="numSeats") int numSeats, @RequestParam(value="email") String email) {
+    public SeatHold findAndHoldSeats(@RequestParam(value = "numSeats") int numSeats, @RequestParam(value = "email") String email) {
         return ticketService.findAndHoldSeats(numSeats, email);
     }
 
     @RequestMapping(value = "/ticket/reserveSeats/{numSeats}/{email}", method = RequestMethod.POST)
-    public String reserveSeats(@RequestParam(value="seatHoldId") int seatHoldId, @RequestParam(value="customerEmail") String customerEmail) {
+    public String reserveSeats(@RequestParam(value = "seatHoldId") int seatHoldId, @RequestParam(value = "customerEmail") String customerEmail) {
         return ticketService.reserveSeats(seatHoldId, customerEmail);
     }
 }

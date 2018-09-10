@@ -7,7 +7,7 @@ public class SeatHold {
     List<Ticket> ticketList;
     int seatHoldId;
 
-    public SeatHold(){
+    public SeatHold() {
         super();
     }
 

@@ -1,5 +1,6 @@
 package emmert.frank.repositories;
 
+import emmert.frank.Constants.Constants;
 import emmert.frank.entities.Ticket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -40,18 +41,18 @@ public class TicketRepository {
     }
 
     public int numSeatsAvailable() {
-        final Integer integer = jdbcTemplate.queryForObject("select count(*) from ticket where status = ?", new Object[]{"Free"}, Integer.class);
+        final Integer integer = jdbcTemplate.queryForObject("select count(*) from ticket where status = ?", new Object[]{Constants.FREE}, Integer.class);
         if (integer != null) return integer;
         else return 0;
     }
 
     public List<Ticket> findSeats(int numSeats) {
-        return jdbcTemplate.query("select * from ticket where status = ? and ROWNUM() <= ? order by seat_rank", new Object[]{"Free", numSeats}, new TicketRowMapper());
+        return jdbcTemplate.query("select * from ticket where status = ? and ROWNUM() <= ? order by seat_rank", new Object[]{Constants.FREE, numSeats}, new TicketRowMapper());
     }
 
     public void holdSeats(List<Ticket> tickets, String email, int hold_id) {
         for (Ticket ticket : tickets) {
-            jdbcTemplate.update("update ticket set status = ?, hold_id = ?, email = ? where seat_number = ?", "Held", hold_id, email, ticket.getSeatNumber());
+            jdbcTemplate.update("update ticket set status = ?, hold_id = ?, email = ? where seat_number = ?", Constants.HELD, hold_id, email, ticket.getSeatNumber());
         }
     }
 
@@ -60,6 +61,6 @@ public class TicketRepository {
     }
 
     public void confirmSeats(int hold_id, String email, String confirmationCode) {
-        jdbcTemplate.update("update ticket set status = ?, confirmation_code = ? where hold_id = ? and email = ?", "Reserved", confirmationCode, hold_id, email);
+        jdbcTemplate.update("update ticket set status = ?, confirmation_code = ? where hold_id = ? and email = ?", Constants.RESERVED, confirmationCode, hold_id, email);
     }
 }
