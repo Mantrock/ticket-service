@@ -1,9 +1,3 @@
-insert into student
-values(10001,'Ranga', 'E1234567');
-
-insert into student
-values(10002,'Ravi', 'A1234568');
-
 insert	into	ticket	 (seat_number, seat_rank, status) 	values	(	1	,	1	,	'Free');
 insert	into	ticket	 (seat_number, seat_rank, status) 	values	(	2	,	2	,	'Free');
 insert	into	ticket	 (seat_number, seat_rank, status) 	values	(	3	,	3	,	'Free');

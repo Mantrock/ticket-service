@@ -1,4 +1,4 @@
-package emmert.frank;
+package emmert.frank.BusinessObjects;
 
 import emmert.frank.entities.SeatHold;
 

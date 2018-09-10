@@ -1,5 +1,6 @@
 package emmert.frank;
 
+import emmert.frank.BusinessObjects.TicketService;
 import emmert.frank.entities.SeatHold;
 import emmert.frank.entities.Ticket;
 import emmert.frank.repositories.TicketRepository;
@@ -12,10 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Component
-public class TicketServiceImpl implements TicketService{
+public class TicketServiceImpl implements TicketService {
 
     private final AtomicInteger counter = new AtomicInteger();
     private static final Logger LOGGER = LogManager.getLogger(TicketServiceImpl.class);
