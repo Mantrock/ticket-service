@@ -59,4 +59,16 @@ public class Ticket {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "seatNumber=" + seatNumber +
+                ", seatRank=" + seatRank +
+                ", status='" + status + '\'' +
+                ", holdId=" + holdId +
+                ", confirmationCode='" + confirmationCode + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
